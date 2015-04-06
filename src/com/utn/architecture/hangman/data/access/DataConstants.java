@@ -6,10 +6,11 @@ public class DataConstants {
 
     public static final String TABLE_PLAYER_NAME = "players";
     public static final String TABLE_PLAYER_CREATE_QUERY = "";
-    public static final String TABLE_PLAYER_ID_NAME = "id_player";
 
     public static final String TABLE_WORD_NAME = "words";
     public static final String TABLE_WORD_CREATE_QUERY = "";
-    public static final String TABLE_WORD_ID_NAME = "id_word";
+
+    public static final String TABLE_WORDPLAYER_NAME = "words_players";
+    public static final String TABLE_WORDPLAYER_CREATE_QUERY = "";
 
 }

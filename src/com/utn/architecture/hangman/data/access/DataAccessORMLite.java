@@ -13,13 +13,11 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.utn.architecture.hangman.model.Player;
+import com.utn.architecture.hangman.model.PlayerWord;
 import com.utn.architecture.hangman.model.Word;
 
 public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 	IDataAccess {
-
-    private RuntimeExceptionDao<Player, Integer> playerDao = null;
-    private RuntimeExceptionDao<Word, Integer> wordDao = null;
 
     public DataAccessORMLite(Context context) {
 	super(context, DataConstants.DATABASE_NAME, null, 1);
@@ -33,6 +31,8 @@ public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 	    Log.i(DataAccessSQLite.class.getName(), "onCreate");
 	    TableUtils.createTableIfNotExists(connectionSource, Player.class);
 	    TableUtils.createTableIfNotExists(connectionSource, Word.class);
+	    TableUtils.createTableIfNotExists(connectionSource,
+		    PlayerWord.class);
 	} catch (SQLException e) {
 	    Log.e(DataAccessSQLite.class.getName(), "Can't create database", e);
 	    throw new RuntimeException(e);
@@ -53,18 +53,9 @@ public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 	}
     }
 
-    public RuntimeExceptionDao<?, Integer> getObjectDao(Class<?> c) {
-	if (c.equals(Player.class))
-	    return playerDao;
-	if (c.equals(Word.class))
-	    return wordDao;
-	return null;
-    }
-
     @Override
     public void close() {
 	super.close();
-	playerDao = null;
     }
 
     @Override
@@ -91,5 +82,20 @@ public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 	    int id, String idName) {
 	// TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
+	return getRuntimeExceptionDao(Player.class);
+    }
+
+    @Override
+    public RuntimeExceptionDao<Word, Integer> getWordDao() {
+	return getRuntimeExceptionDao(Word.class);
+    }
+
+    @Override
+    public RuntimeExceptionDao<PlayerWord, Integer> getPlayerWordDao() {
+	return getRuntimeExceptionDao(PlayerWord.class);
     }
 }

@@ -8,12 +8,18 @@ import com.utn.architecture.hangman.data.access.DataConstants;
 @DatabaseTable(tableName = DataConstants.TABLE_PLAYER_NAME)
 public class Player {
 
-    @DatabaseField(generatedId = true, useGetSet = true, dataType = DataType.INTEGER)
+    public static final String ID_FIELD = "id_player";
+    public static final String USERNAME_FIELD = "username";
+    public static final String LEVEL_FIELD = "level";
+
+    @DatabaseField(generatedId = true, columnName = ID_FIELD, useGetSet = true, dataType = DataType.INTEGER)
     private int id;
     @DatabaseField(useGetSet = true, canBeNull = false, dataType = DataType.STRING)
     private String username;
-    @DatabaseField(useGetSet = true, canBeNull = false, dataType = DataType.STRING)
-    private String password;
+    /*
+     * @DatabaseField(useGetSet = true, canBeNull = false, dataType =
+     * DataType.STRING) private String password;
+     */
     @DatabaseField(useGetSet = true, canBeNull = false, dataType = DataType.INTEGER)
     private String level;
 
@@ -35,14 +41,6 @@ public class Player {
 
     public void setUsername(String username) {
 	this.username = username;
-    }
-
-    public String getPassword() {
-	return password;
-    }
-
-    public void setPassword(String password) {
-	this.password = password;
     }
 
     public String getLevel() {

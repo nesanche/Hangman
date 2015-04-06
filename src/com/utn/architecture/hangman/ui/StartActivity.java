@@ -14,14 +14,13 @@ public class StartActivity extends Activity {
 
     private IDataAccess databaseAccess = null;
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_start);
 	this.databaseAccess = getDataAccess();
-	RuntimeExceptionDao<Word, Integer> wordDao = (RuntimeExceptionDao<Word, Integer>) databaseAccess
-		.getObjectDao(Word.class);
+	RuntimeExceptionDao<Word, Integer> wordDao = databaseAccess
+		.getWordDao();
 
     }
 

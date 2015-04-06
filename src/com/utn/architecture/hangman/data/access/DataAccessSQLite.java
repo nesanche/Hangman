@@ -12,6 +12,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.utn.architecture.hangman.model.Player;
+import com.utn.architecture.hangman.model.PlayerWord;
+import com.utn.architecture.hangman.model.Word;
 
 public class DataAccessSQLite extends SQLiteOpenHelper implements IDataAccess {
 
@@ -94,7 +97,18 @@ public class DataAccessSQLite extends SQLiteOpenHelper implements IDataAccess {
     }
 
     @Override
-    public RuntimeExceptionDao<?, Integer> getObjectDao(Class<?> c) {
+    public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    @Override
+    public RuntimeExceptionDao<Word, Integer> getWordDao() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    public RuntimeExceptionDao<PlayerWord, Integer> getPlayerWordDao() {
 	// TODO Auto-generated method stub
 	return null;
     }

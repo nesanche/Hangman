@@ -8,7 +8,9 @@ import com.utn.architecture.hangman.data.access.DataConstants;
 @DatabaseTable(tableName = DataConstants.TABLE_WORD_NAME)
 public class Word {
 
-    @DatabaseField(generatedId = true, useGetSet = true, dataType = DataType.INTEGER)
+    public static final String ID_FIELD = "id_word";
+
+    @DatabaseField(generatedId = true, columnName = ID_FIELD, useGetSet = true, dataType = DataType.INTEGER)
     private int id;
     @DatabaseField(useGetSet = true, canBeNull = false, dataType = DataType.STRING)
     private String word;
