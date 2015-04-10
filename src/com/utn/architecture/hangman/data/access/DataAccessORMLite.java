@@ -25,8 +25,6 @@ public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
-	// db.execSQL(DataConstants.TABLE_PLAYER_CREATE_QUERY);
-	// db.execSQL(DataConstants.TABLE_WORD_CREATE_QUERY);
 	try {
 	    Log.i(DataAccessSQLite.class.getName(), "onCreate");
 	    TableUtils.createTableIfNotExists(connectionSource, Player.class);
@@ -46,6 +44,7 @@ public class DataAccessORMLite extends OrmLiteSqliteOpenHelper implements
 	    Log.i(DataAccessSQLite.class.getName(), "onUpgrade");
 	    TableUtils.dropTable(connectionSource, Player.class, true);
 	    TableUtils.dropTable(connectionSource, Word.class, true);
+	    TableUtils.dropTable(connectionSource, PlayerWord.class, true);
 	    onCreate(db, connectionSource);
 	} catch (SQLException e) {
 	    Log.e(DataAccessSQLite.class.getName(), "Can't drop databases", e);
