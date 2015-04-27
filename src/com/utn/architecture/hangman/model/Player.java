@@ -21,34 +21,39 @@ public class Player {
      * DataType.STRING) private String password;
      */
     @DatabaseField(useGetSet = true, canBeNull = false, dataType = DataType.INTEGER)
-    private String level;
+    private int level;
 
     public Player() {
 
     }
 
+    public Player(String username, int level) {
+        this.username = username;
+        this.level = level;
+    }
+
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getUsername() {
-	return username;
+        return username;
     }
 
     public void setUsername(String username) {
-	this.username = username;
+        this.username = username;
     }
 
-    public String getLevel() {
-	return level;
+    public int getLevel() {
+        return level;
     }
 
-    public void setLevel(String level) {
-	this.level = level;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
 }
