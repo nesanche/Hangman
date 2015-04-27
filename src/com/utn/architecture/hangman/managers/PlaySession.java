@@ -12,6 +12,9 @@ public class PlaySession implements IPlaySession {
     private Player player;
     private int lifes;
     private int coins;
+    private final static String [] lettersArray =  new String[] { "A", "B", "C", "D", "E", "F",
+            "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+            "S", "T", "U", "V", "W", "X", "Y", "Z" };
     private ArrayList<String> letters;
 
     public PlaySession(Player player, Word word, int lifes, int coins) {
@@ -20,11 +23,7 @@ public class PlaySession implements IPlaySession {
         this.lifes = lifes;
         this.coins = coins;
         this.letters = new ArrayList<String>();
-        String[] lettersArray = new String[] { "A", "B", "C", "D", "E", "F",
-                "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-                "S", "T", "U", "V", "W", "X", "Y", "Z" };
         this.letters = (ArrayList<String>) Arrays.asList(lettersArray);
-        ;
     }
 
     @Override
@@ -49,7 +48,11 @@ public class PlaySession implements IPlaySession {
         return getWordPositionsOfLetter(letter);
     }
 
-    public int getLifes() {
+    public static String[] getLettersArray() {
+		return lettersArray;
+	}
+
+	public int getLifes() {
         return lifes;
     }
 
